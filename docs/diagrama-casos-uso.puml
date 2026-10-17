@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Asistente / Estudiante" as U
+
+rectangle "Sistema Inteligente - Megaland Bacano 2026" {
+    usecase "Ingresar Datos de Percepción" as UC1
+    usecase "Procesar Petición HTTP" as UC2
+    usecase "Calcular Puntaje Neuronal MLP" as UC3
+    usecase "Evaluar Base de Conocimiento - Rule Engine" as UC4
+    usecase "Generar Explicación Contrafactual" as UC5
+    usecase "Visualizar Asignación y Diagnóstico" as UC6
+}
+
+U --> UC1
+UC1 --> UC2
+UC2 --> UC3
+UC3 --> UC4
+UC4 --> UC5
+UC5 --> UC6
+UC6 --> U
+@enduml

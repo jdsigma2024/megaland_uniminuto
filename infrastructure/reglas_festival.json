@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "nombre": "Regla de Menores de Edad",
+    "expresion": "edad < 18",
+    "resultado": {
+      "zona_asignada": "General (Zona Familiar / Sin Alcohol)",
+      "estado": "ACCESO_RESTRINGIDO_VIP",
+      "diagnostico": "Menor de edad según la normativa del evento en El Campín.",
+      "contrafactual": null
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Regla Acceso VIP",
+    "expresion": "puntaje_mlp >= 0.75",
+    "resultado": {
+      "zona_asignada": "VIP / Preferencial (Megaland Bacano 2026)",
+      "estado": "ACCESO_AUTORIZADO",
+      "diagnostico": "Alta afinidad y fidelidad analizada por el modelo MLP.",
+      "contrafactual": null
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Regla Acceso Condicional",
+    "expresion": "puntaje_mlp >= 0.5 and puntaje_mlp < 0.75",
+    "resultado": {
+      "zona_asignada": "General (Gramilla / Gradería El Campín)",
+      "estado": "ACCESO_CONDICIONAL",
+      "diagnostico": "Puntaje en zona de incertidumbre de la red.",
+      "contrafactual": "Si descargas la app oficial de Tuboleta antes del evento, tu puntaje subirá para acceso preferencial."
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Regla Acceso Estándar",
+    "expresion": "true",
+    "resultado": {
+      "zona_asignada": "General Estándar",
+      "estado": "ACCESO_ESTANDAR",
+      "diagnostico": "Baja interacción previa detectada.",
+      "contrafactual": "Si participas en las dinámicas digitales de la emisora, podrás mejorar tu asignación."
+    }
+  }
+]

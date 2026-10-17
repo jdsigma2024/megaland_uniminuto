@@ -1,0 +1,44 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class AsistenteFestival {
+    +str nombre
+    +int edad
+    +int asistencias_previas
+    +bool gusta_reggaeton
+    +float hora_llegada_pm
+}
+
+class ResultadoEvaluacion {
+    +str asistente
+    +float puntaje_mlp
+    +str zona_asignada
+    +str estado
+    +str diagnostico
+    +str contrafactual_accionable
+}
+
+interface EvaluadorReglasPort {
+    +inferir_resultado(asistente: AsistenteFestival, puntaje_mlp: float) : ResultadoEvaluacion
+}
+
+class MotorReglasEngineAdapter {
+    -list reglas_compiladas
+    +__init__(ruta_reglas: str)
+    -_cargar_y_compilar_reglas(ruta: str) : list
+    +inferir_resultado(asistente: AsistenteFestival, puntaje_mlp: float) : ResultadoEvaluacion
+}
+
+class EvaluarAdmisionVIP {
+    -EvaluadorReglasPort evaluador_reglas
+    +__init__(evaluador_reglas: EvaluadorReglasPort)
+    +ejecutar(asistente: AsistenteFestival) : ResultadoEvaluacion
+    -_calcular_puntaje_red_neural(asistente: AsistenteFestival) : float
+}
+
+EvaluadorReglasPort <|.. MotorReglasEngineAdapter : Implementa
+EvaluarAdmisionVIP --> EvaluadorReglasPort : Usa (Puerto)
+EvaluarAdmisionVIP ..> AsistenteFestival : Usa
+EvaluarAdmisionVIP ..> ResultadoEvaluacion : Retorna
+MotorReglasEngineAdapter ..> ResultadoEvaluacion : Retorna
+@enduml

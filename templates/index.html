@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas Inteligentes - UNIMINUTO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        uniminutoBlue: '#004A93',    /* Azul institucional UNIMINUTO */
+                        uniminutoYellow: '#FFCE00',  /* Amarillo institucional UNIMINUTO */
+                        uniminutoDark: '#212844',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans text-slate-800">
+    <!-- Header Institucional UNIMINUTO -->
+    <header class="bg-uniminutoBlue text-white shadow-lg border-b-4 border-uniminutoYellow">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Imagen institucional reemplazando el texto U3 -->
+                <div class="bg-white p-1 rounded shadow flex items-center justify-center">
+                    <img src="https://keystoneacademic-res.cloudinary.com/image/upload/c_fit,w_384,h_128/dpr_1/f_auto/q_auto/v1/element/96/96865_thumb.jpg" alt="Logo UNIMINUTO" class="h-8 object-contain">
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">Sistemas Expertos e Inteligentes</h1>
+                    <p class="text-xs text-sky-200">Corporación Universitaria Minuto de Dios - UNIMINUTO</p>
+                </div>
+            </div>
+            <div class="mt-3 md:mt-0">
+                <span class="inline-block bg-sky-900 text-sky-100 text-xs px-3 py-1.5 rounded-full font-semibold border border-sky-700">
+                    Demo: Arquitectura Hexagonal & Motor de Reglas (Jinja2)
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+        <!-- Panel de Formulario / Percepción -->
+        <div class="bg-white rounded-xl shadow-md p-8 border border-slate-200">
+            <div class="flex items-center space-x-2 border-b border-slate-100 pb-4 mb-6">
+                <div class="p-2 bg-sky-50 text-uniminutoBlue rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-uniminutoDark">Percepción del Agente</h2>
+                    <p class="text-xs text-slate-500">Variables de entrada para Megaland Bacano 2026</p>
+                </div>
+            </div>
+
+            <form id="evalForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre del Asistente</label>
+                    <input type="text" id="nombre" value="Jose Sanchez" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-uniminutoBlue outline-none text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Edad</label>
+                        <input type="number" id="edad" value="35" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-uniminutoBlue outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Hora Llegada (PM)</label>
+                        <input type="number" step="0.5" id="hora_llegada_pm" value="1.5" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-uniminutoBlue outline-none text-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Asistencias Previas</label>
+                        <input type="number" id="asistencias_previas" value="4" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-uniminutoBlue outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">¿Gusta Reggaetón?</label>
+                        <select id="gusta_reggaeton" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-uniminutoBlue outline-none text-sm">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-uniminutoBlue hover:bg-sky-900 text-white font-bold py-3 rounded-lg shadow transition duration-200 mt-4 flex items-center justify-center space-x-2 text-sm">
+                    <span>Procesar en Vivo (MLP + Reglas)</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Panel de Resultados / Razonamiento y Gobernanza -->
+        <div class="bg-white rounded-xl shadow-md p-8 border border-slate-200 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center space-x-2 border-b border-slate-100 pb-4 mb-6">
+                    <div class="p-2 bg-amber-50 text-uniminutoYellow rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-uniminutoDark">Salida del Sistema Híbrido</h2>
+                        <p class="text-xs text-slate-500">Puntaje estadístico y cumplimiento normativo</p>
+                    </div>
+                </div>
+
+                <div id="resultadoPlaceholder" class="text-center py-14 text-slate-400">
+                    <svg class="w-12 h-12 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <p class="text-sm">Ejecuta el formulario para ver la evaluación del agente.</p>
+                </div>
+
+                <div id="resultadoCard" class="hidden space-y-4">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Asistente</span>
+                        <h3 id="resNombre" class="text-base font-bold text-uniminutoBlue"></h3>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-sky-50 p-3 rounded-lg border border-sky-100">
+                            <span class="text-[10px] font-bold text-sky-700 uppercase">Puntaje Red Neuronal (MLP)</span>
+                            <p id="resPuntaje" class="text-xl font-black text-uniminutoDark"></p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                            <span class="text-[10px] font-bold text-amber-700 uppercase">Estado de Gobierno</span>
+                            <p id="resEstado" class="text-xs font-bold text-amber-900 mt-1"></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+                        <span class="text-[10px] font-bold text-emerald-700 uppercase">Zona Asignada</span>
+                        <p id="resZona" class="text-sm font-bold text-emerald-900 mt-1"></p>
+                    </div>
+
+                    <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                        <span class="text-[10px] font-bold text-indigo-700 uppercase">Diagnóstico del Sistema</span>
+                        <p id="resDiagnostico" class="text-xs text-indigo-900 mt-1"></p>
+                    </div>
+
+                    <div id="contrafactualBox" class="hidden bg-rose-50 p-3 rounded-lg border border-rose-200">
+                        <span class="text-[10px] font-bold text-rose-700 uppercase">💡 Explicación Contrafactual (Accionable)</span>
+                        <p id="resContrafactual" class="text-xs text-rose-900 mt-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-3 mt-4 text-[11px] text-slate-400 text-center">
+                Unidad 3 • Sistemas Expertos • Facultad de Ingeniería UNIMINUTO
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('evalForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const payload = {
+                nombre: document.getElementById('nombre').value,
+                edad: parseInt(document.getElementById('edad').value),
+                asistencias_previas: parseInt(document.getElementById('asistencias_previas').value),
+                gusta_reggaeton: document.getElementById('gusta_reggaeton').value === 'true',
+                hora_llegada_pm: parseFloat(document.getElementById('hora_llegada_pm').value)
+            };
+
+            try {
+                const response = await fetch('/api/v1/evaluar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                const res = data.resultado;
+
+                document.getElementById('resultadoPlaceholder').classList.add('hidden');
+                document.getElementById('resultadoCard').classList.remove('hidden');
+
+                document.getElementById('resNombre').innerText = res.asistente;
+                document.getElementById('resPuntaje').innerText = res.puntaje_mlp;
+                document.getElementById('resEstado').innerText = res.estado;
+                document.getElementById('resZona').innerText = res.zona_asignada;
+                document.getElementById('resDiagnostico').innerText = res.diagnostico;
+
+                const contraBox = document.getElementById('contrafactualBox');
+                if (res.contrafactual_accionable) {
+                    contraBox.classList.remove('hidden');
+                    document.getElementById('resContrafactual').innerText = res.contrafactual_accionable;
+                } else {
+                    contraBox.classList.add('hidden');
+                }
+            } catch (err) {
+                alert('Error al comunicarse con la API de FastAPI.');
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>

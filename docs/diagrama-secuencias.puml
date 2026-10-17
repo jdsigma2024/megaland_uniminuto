@@ -1,0 +1,44 @@
+@startuml
+autonumber
+
+actor "Asistente / Usuario" as Usuario
+participant "Interfaz Web\n(Jinja2 / Tailwind)" as UI
+participant "FastAPI\n(Adaptador API)" as API
+participant "EvaluarAdmisionVIP\n(Caso de Uso)" as UC
+participant "MotorReglasEngineAdapter\n(Adaptador Rule Engine)" as Adapter
+participant "Base de Conocimiento\n(.json)" as JSON
+
+Usuario -> UI: Rellena formulario y hace clic en "Procesar"
+activate UI
+UI -> API: POST /api/v1/evaluar (JSON DTO)
+deactivate UI
+
+activate API
+API -> UC: ejecutar(AsistenteFestival)
+activate UC
+
+note over UC: Simulación de Perceptrón Multicapa (MLP)
+UC -> UC: _calcular_puntaje_red_neural() -> puntaje_mlp
+
+UC -> Adapter: inferir_resultado(asistente, puntaje_mlp)
+activate Adapter
+
+Adapter -> JSON: Lee expresiones compiladas (rule-engine)
+activate JSON
+JSON --> Adapter: Reglas de negocio cargadas
+deactivate JSON
+
+note over Adapter: Evalúa hechos contra expresiones lógicas
+Adapter --> UC: ResultadoEvaluacion (Zona, Estado, Contrafactual)
+deactivate Adapter
+
+UC --> API: Retorna Objeto ResultadoEvaluacion
+deactivate UC
+
+API --> UI: Responde JSON con la evaluación
+deactivate API
+
+activate UI
+UI -> Usuario: Renderiza tarjetas dinámicas con colores UNIMINUTO
+deactivate UI
+@enduml
